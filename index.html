@@ -26,6 +26,10 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
+        .original-stats-section {
+            margin-bottom: 20px;
+        }
+
         .equipment-section {
             margin-bottom: 20px;
         }
@@ -47,9 +51,16 @@
 
         .stats-inputs {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 10px;
             margin-top: 10px;
+        }
+
+        .stat-input-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 5px;
         }
 
         .stat-input {
@@ -65,10 +76,12 @@
 
         .stat-input input,
         .stat-input select {
-            padding: 8px;
+            padding: 6px;
             border: 1px solid #ccc;
             border-radius: 3px;
             width: 100%;
+            font-size: 14px;
+            min-height: 34px;
         }
 
         .btn {
@@ -107,7 +120,7 @@
 
         .results-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
         }
 
@@ -192,6 +205,27 @@
             align-items: center;
         }
 
+        /* 原始面板属性布局 */
+        .original-stats-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        /* 计算结果布局 */
+        .results-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .result-item-half {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+
         /* 移动端适配 */
         @media (max-width: 768px) {
             body {
@@ -213,6 +247,19 @@
             
             .stats-inputs {
                 grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .stat-input-pair {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .original-stats-pair {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .results-pair {
+                grid-template-columns: 1fr 1fr;
             }
             
             .results-grid {
@@ -222,16 +269,97 @@
             .result-item {
                 margin-bottom: 10px;
             }
+            
+            .stat-input input,
+            .stat-input select {
+                padding: 6px;
+                min-height: 32px;
+            }
         }
 
         @media (max-width: 480px) {
-            .stats-inputs {
+            .stat-input-pair {
+                grid-template-columns: 1fr;
+            }
+            
+            .original-stats-pair {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-pair {
                 grid-template-columns: 1fr;
             }
             
             .stat-input input,
             .stat-input select {
-                padding: 6px;
+                padding: 5px;
+                font-size: 14px;
+                min-height: 30px;
+            }
+            
+            .btn {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+        }
+        
+        /* 针对小屏幕设备进一步优化 */
+        @media (max-width: 360px) {
+            .stat-input input,
+            .stat-input select {
+                padding: 4px;
+                font-size: 13px;
+                min-height: 28px;
+            }
+            
+            .stats-inputs {
+                gap: 8px;
+            }
+            
+            .result-item {
+                padding: 8px;
+            }
+            
+            .result-value {
+                font-size: 16px;
+            }
+            
+            .original-value {
+                font-size: 12px;
+            }
+        }
+        
+        /* 针对较宽屏幕的优化 */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .stat-input-pair {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .original-stats-pair {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .results-pair {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        /* 针对较大屏幕的优化 */
+        @media (min-width: 1024px) {
+            .stat-input-pair {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .original-stats-pair {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .results-pair {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -241,16 +369,9 @@
     <div class="container">
         <h1>燕云十六声-会心流承音词条期望值计算</h1>
 
-        <div class="equipment-section">
-            <button class="btn add-equipment-btn" id="addEquipmentBtn">添加装备</button>
-            <div id="equipmentContainer">
-                <!-- 装备项将动态添加到这里 -->
-            </div>
-        </div>
-
         <div class="original-stats-section">
             <h2>原始面板属性</h2>
-            <div class="stats-inputs">
+            <div class="original-stats-pair">
                 <div class="stat-input">
                     <label>原始最小外功</label>
                     <input type="number" id="originalMinAttack" placeholder="输入原始最小外功">
@@ -259,6 +380,8 @@
                     <label>原始最大外功</label>
                     <input type="number" id="originalMaxAttack" placeholder="输入原始最大外功">
                 </div>
+            </div>
+            <div class="original-stats-pair">
                 <div class="stat-input">
                     <label>原始会心率</label>
                     <input type="number" id="originalCritRate" placeholder="输入原始会心率" step="0.01">
@@ -270,12 +393,19 @@
             </div>
         </div>
 
+        <div class="equipment-section">
+            <button class="btn add-equipment-btn" id="addEquipmentBtn">添加装备</button>
+            <div id="equipmentContainer">
+                <!-- 装备项将动态添加到这里 -->
+            </div>
+        </div>
+
         <button class="btn calculate-btn" id="calculateBtn">计算满词条后属性</button>
 
         <div class="results-section">
             <h2>计算结果</h2>
-            <div class="results-grid">
-                <div class="result-item">
+            <div class="results-pair">
+                <div class="result-item-half">
                     <h3>最小外功</h3>
                     <div class="comparison">
                         <span class="original-value" id="originalMinAttackResult">-</span>
@@ -283,7 +413,7 @@
                         <span class="result-value" id="finalMinAttackResult">-</span>
                     </div>
                 </div>
-                <div class="result-item">
+                <div class="result-item-half">
                     <h3>最大外功</h3>
                     <div class="comparison">
                         <span class="original-value" id="originalMaxAttackResult">-</span>
@@ -291,7 +421,9 @@
                         <span class="result-value" id="finalMaxAttackResult">-</span>
                     </div>
                 </div>
-                <div class="result-item crit-result">
+            </div>
+            <div class="results-pair">
+                <div class="result-item-half crit-result">
                     <h3>会心率</h3>
                     <div class="comparison">
                         <span class="original-value" id="originalCritRateResult">-</span>
@@ -303,7 +435,7 @@
                         <span class="yellow-crit" id="yellowCritRateResult">-</span>
                     </div>
                 </div>
-                <div class="result-item precision-result">
+                <div class="result-item-half precision-result">
                     <h3>精准</h3>
                     <div class="comparison">
                         <span class="original-value" id="originalPrecisionResult">-</span>
@@ -383,100 +515,113 @@
                 equipmentDiv.id = equipmentId;
 
                 equipmentDiv.innerHTML = `
+                    <div class="stats-inputs">
+                        <div class="stat-input-pair">
+                            <div class="stat-input">
+                                <label>词条1类型</label>
+                                <select class="stat-type" data-equipment="${equipmentId}" data-stat="1">
+                                    <option value="">选择类型</option>
+                                    <option value="minAttack">最小外功</option>
+                                    <option value="maxAttack">最大外功</option>
+                                    <option value="critRate">会心率</option>
+                                    <option value="precision">精准</option>
+                                    <option value="dex">敏</option>
+                                    <option value="str">劲</option>
+                                </select>
+                                <div class="error-message" id="error-${equipmentId}-1"></div>
+                            </div>
+                            <div class="stat-input">
+                                <label>词条1数值</label>
+                                <input type="number" class="stat-value" data-equipment="${equipmentId}" data-stat="1" placeholder="输入数值">
+                            </div>
+                        </div>
+                        <div class="stat-input-pair">
+                            <div class="stat-input">
+                                <label>词条2类型</label>
+                                <select class="stat-type" data-equipment="${equipmentId}" data-stat="2">
+                                    <option value="">选择类型</option>
+                                    <option value="minAttack">最小外功</option>
+                                    <option value="maxAttack">最大外功</option>
+                                    <option value="critRate">会心率</option>
+                                    <option value="precision">精准</option>
+                                    <option value="dex">敏</option>
+                                    <option value="str">劲</option>
+                                </select>
+                                <div class="error-message" id="error-${equipmentId}-2"></div>
+                            </div>
+                            <div class="stat-input">
+                                <label>词条2数值</label>
+                                <input type="number" class="stat-value" data-equipment="${equipmentId}" data-stat="2" placeholder="输入数值">
+                            </div>
+                        </div>
+                        <div class="stat-input-pair">
+                            <div class="stat-input">
+                                <label>词条3类型</label>
+                                <select class="stat-type" data-equipment="${equipmentId}" data-stat="3">
+                                    <option value="">选择类型</option>
+                                    <option value="minAttack">最小外功</option>
+                                    <option value="maxAttack">最大外功</option>
+                                    <option value="critRate">会心率</option>
+                                    <option value="precision">精准</option>
+                                    <option value="dex">敏</option>
+                                    <option value="str">劲</option>
+                                </select>
+                                <div class="error-message" id="error-${equipmentId}-3"></div>
+                            </div>
+                            <div class="stat-input">
+                                <label>词条3数值</label>
+                                <input type="number" class="stat-value" data-equipment="${equipmentId}" data-stat="3" placeholder="输入数值">
+                            </div>
+                        </div>
+                        <div class="stat-input-pair">
+                            <div class="stat-input">
+                                <label>词条4类型</label>
+                                <select class="stat-type" data-equipment="${equipmentId}" data-stat="4">
+                                    <option value="">选择类型</option>
+                                    <option value="minAttack">最小外功</option>
+                                    <option value="maxAttack">最大外功</option>
+                                    <option value="critRate">会心率</option>
+                                    <option value="precision">精准</option>
+                                    <option value="dex">敏</option>
+                                    <option value="str">劲</option>
+                                </select>
+                                <div class="error-message" id="error-${equipmentId}-4"></div>
+                            </div>
+                            <div class="stat-input">
+                                <label>词条4数值</label>
+                                <input type="number" class="stat-value" data-equipment="${equipmentId}" data-stat="4" placeholder="输入数值">
+                            </div>
+                        </div>
+                        <div class="stat-input-pair">
+                            <div class="stat-input">
+                                <label>词条5类型</label>
+                                <select class="stat-type" data-equipment="${equipmentId}" data-stat="5">
+                                    <option value="">选择类型</option>
+                                    <option value="minAttack">最小外功</option>
+                                    <option value="maxAttack">最大外功</option>
+                                    <option value="critRate">会心率</option>
+                                    <option value="precision">精准</option>
+                                    <option value="dex">敏</option>
+                                    <option value="str">劲</option>
+                                </select>
+                                <div class="error-message" id="error-${equipmentId}-5"></div>
+                            </div>
+                            <div class="stat-input">
+                                <label>词条5数值</label>
+                                <input type="number" class="stat-value" data-equipment="${equipmentId}" data-stat="5" placeholder="输入数值">
+                            </div>
+                        </div>
+                    </div>
                     <div class="equipment-header">
                         <h3>装备 ${equipmentCount}</h3>
                         <button class="btn delete-equipment-btn" data-id="${equipmentId}">删除</button>
                     </div>
-                    <div class="stats-inputs">
-                        <div class="stat-input">
-                            <label>词条1类型</label>
-                            <select class="stat-type" data-equipment="${equipmentId}" data-stat="1">
-                                <option value="">选择类型</option>
-                                <option value="minAttack">最小外功</option>
-                                <option value="maxAttack">最大外功</option>
-                                <option value="critRate">会心率</option>
-                                <option value="precision">精准</option>
-                                <option value="dex">敏</option>
-                                <option value="str">劲</option>
-                            </select>
-                            <div class="error-message" id="error-${equipmentId}-1"></div>
-                        </div>
-                        <div class="stat-input">
-                            <label>词条1数值</label>
-                            <input type="number" class="stat-value" data-equipment="${equipmentId}" data-stat="1" placeholder="输入数值">
-                        </div>
-                        <div class="stat-input">
-                            <label>词条2类型</label>
-                            <select class="stat-type" data-equipment="${equipmentId}" data-stat="2">
-                                <option value="">选择类型</option>
-                                <option value="minAttack">最小外功</option>
-                                <option value="maxAttack">最大外功</option>
-                                <option value="critRate">会心率</option>
-                                <option value="precision">精准</option>
-                                <option value="dex">敏</option>
-                                <option value="str">劲</option>
-                            </select>
-                            <div class="error-message" id="error-${equipmentId}-2"></div>
-                        </div>
-                        <div class="stat-input">
-                            <label>词条2数值</label>
-                            <input type="number" class="stat-value" data-equipment="${equipmentId}" data-stat="2" placeholder="输入数值">
-                        </div>
-                        <div class="stat-input">
-                            <label>词条3类型</label>
-                            <select class="stat-type" data-equipment="${equipmentId}" data-stat="3">
-                                <option value="">选择类型</option>
-                                <option value="minAttack">最小外功</option>
-                                <option value="maxAttack">最大外功</option>
-                                <option value="critRate">会心率</option>
-                                <option value="precision">精准</option>
-                                <option value="dex">敏</option>
-                                <option value="str">劲</option>
-                            </select>
-                            <div class="error-message" id="error-${equipmentId}-3"></div>
-                        </div>
-                        <div class="stat-input">
-                            <label>词条3数值</label>
-                            <input type="number" class="stat-value" data-equipment="${equipmentId}" data-stat="3" placeholder="输入数值">
-                        </div>
-                        <div class="stat-input">
-                            <label>词条4类型</label>
-                            <select class="stat-type" data-equipment="${equipmentId}" data-stat="4">
-                                <option value="">选择类型</option>
-                                <option value="minAttack">最小外功</option>
-                                <option value="maxAttack">最大外功</option>
-                                <option value="critRate">会心率</option>
-                                <option value="precision">精准</option>
-                                <option value="dex">敏</option>
-                                <option value="str">劲</option>
-                            </select>
-                            <div class="error-message" id="error-${equipmentId}-4"></div>
-                        </div>
-                        <div class="stat-input">
-                            <label>词条4数值</label>
-                            <input type="number" class="stat-value" data-equipment="${equipmentId}" data-stat="4" placeholder="输入数值">
-                        </div>
-                        <div class="stat-input">
-                            <label>词条5类型</label>
-                            <select class="stat-type" data-equipment="${equipmentId}" data-stat="5">
-                                <option value="">选择类型</option>
-                                <option value="minAttack">最小外功</option>
-                                <option value="maxAttack">最大外功</option>
-                                <option value="critRate">会心率</option>
-                                <option value="precision">精准</option>
-                                <option value="dex">敏</option>
-                                <option value="str">劲</option>
-                            </select>
-                            <div class="error-message" id="error-${equipmentId}-5"></div>
-                        </div>
-                        <div class="stat-input">
-                            <label>词条5数值</label>
-                            <input type="number" class="stat-value" data-equipment="${equipmentId}" data-stat="5" placeholder="输入数值">
-                        </div>
-                    </div>
                 `;
 
                 equipmentContainer.appendChild(equipmentDiv);
+
+                // 将添加装备按钮移动到装备容器的最后
+                document.querySelector('.equipment-section').appendChild(addEquipmentBtn);
 
                 // 添加删除事件
                 equipmentDiv.querySelector('.delete-equipment-btn').addEventListener('click', function () {
@@ -516,7 +661,7 @@
 
                 if (statType && STAT_LIMITS[statType] !== undefined) {
                     if (statValue > STAT_LIMITS[statType]) {
-                        errorElement.textContent = '超出的承音上限的数值默认为需要扣除的多余部分';
+                        errorElement.textContent = '超出承音上限-扣除多余部分';
                         element.style.borderColor = '#9ee09e';
                     } else {
                         errorElement.textContent = '';
