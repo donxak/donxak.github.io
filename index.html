@@ -6,29 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>燕云十六声-会心流承音词条期望值计算</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 10px;
             background-color: #f5f5f5;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
             background-color: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .equipment-section {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .equipment-item {
             border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 15px;
+            padding: 10px;
+            margin-bottom: 10px;
             border-radius: 5px;
             background-color: #fafafa;
         }
@@ -42,7 +47,7 @@
 
         .stats-inputs {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 10px;
             margin-top: 10px;
         }
@@ -60,9 +65,10 @@
 
         .stat-input input,
         .stat-input select {
-            padding: 5px;
+            padding: 8px;
             border: 1px solid #ccc;
             border-radius: 3px;
+            width: 100%;
         }
 
         .btn {
@@ -76,7 +82,7 @@
         .add-equipment-btn {
             background-color: #4CAF50;
             color: white;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .delete-equipment-btn {
@@ -87,12 +93,13 @@
         .calculate-btn {
             background-color: #2196F3;
             color: white;
-            margin-top: 20px;
+            margin-top: 15px;
+            width: 100%;
         }
 
         .results-section {
-            margin-top: 30px;
-            padding: 20px;
+            margin-top: 20px;
+            padding: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #f9f9f9;
@@ -100,12 +107,15 @@
 
         .results-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
 
         .result-item {
             text-align: center;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 5px;
         }
 
         .result-item h3 {
@@ -127,7 +137,7 @@
         .arrow {
             font-size: 20px;
             color: #2196F3;
-            margin: 0 10px;
+            margin: 0 5px;
         }
 
         .comparison {
@@ -135,10 +145,11 @@
             align-items: center;
             justify-content: center;
             margin: 5px 0;
+            flex-wrap: wrap;
         }
 
         .info-section {
-            margin-top: 30px;
+            margin-top: 20px;
             padding: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -165,13 +176,13 @@
         .yellow-precision {
             color: #FFD700;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 18px;
         }
 
         .yellow-crit {
             color: #FFD700;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 18px;
         }
 
         .precision-result,
@@ -179,6 +190,49 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .equipment-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .equipment-header h3 {
+                margin-bottom: 10px;
+            }
+            
+            .stats-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .result-item {
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-input input,
+            .stat-input select {
+                padding: 6px;
+            }
         }
     </style>
 </head>
@@ -466,7 +520,7 @@
                         element.style.borderColor = '#9ee09e';
                     } else {
                         errorElement.textContent = '';
-                        element.style.borderColor = '#9ee09e';
+                        element.style.borderColor = '#ccc';
                     }
                 }
             }
