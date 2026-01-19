@@ -215,7 +215,7 @@
         .results-pair {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 0px;
         }
 
         .result-item-half {
@@ -469,6 +469,12 @@
                         <span class="yellow-fonts" id="yellowhuiYiResult">-</span>
                     </div>
                 </div>
+                <div class="result-item-half crit-result">
+                    <h3>黄字会心+会意</h3>
+                    <div class="comparison">
+                        <span class="yellow-fonts" id="baojilv">-</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -497,7 +503,7 @@
             <p><strong>黄字会心率计算：</strong></p>
             <p>黄字会心率 = 白字会心率 × 54.05%</p>
             <p><strong>黄字会意率计算：</strong></p>
-            <p>黄字会意率 = 白字会意率 × 54%</p>
+            <p>黄字会意率 = 白字会意率 × 54.07%</p>
         </div>
     </div>
 
@@ -711,22 +717,38 @@
             // 计算黄字精准率的二次函数
             // 已知三个点：(100, 83.92), (120, 94.73), (130, 100)
             function calculateYellowPrecision(whitePrecision) {
-                // 通过预先计算得出的二次函数系数
-                // y = -0.00045x² + 0.09955x + 28.06
-                const x = whitePrecision;
-                return -0.00045 * x * x + 0.09955 * x + 28.06;
+                // 使用拉格朗日插值法或解线性方程组
+                // 设 y = ax^2 + bx + c
+                // 10000a + 100b + c = 83.92  (1)
+                // 14400a + 120b + c = 94.73  (2)
+                // 16900a + 130b + c = 100     (3)
+
+                // (2)-(1): 4400a + 20b = 10.81  (4)
+                // (3)-(2): 2500a + 10b = 5.27   (5)
+                // (4)-2*(5): 4400a + 20b - 2*(2500a + 10b) = 10.81 - 2*5.27
+                // 4400a + 20b - 5000a - 20b = 10.81 - 10.54
+                // -600a = 0.27
+                // a = -0.00045
+
+                const a_calc = -0.00045;
+                const b_calc = (10.81 - 4400 * a_calc) / 20;  // 从方程(4)计算b
+                const c_calc = 83.92 - a_calc * 100 * 100 - b_calc * 100;  // 从方程(1)计算c
+
+                return a_calc * whitePrecision * whitePrecision + b_calc * whitePrecision + c_calc;
             }
 
             // 计算黄字会心率
             function calculateYellowhuiXinRate(whitehuiXinRate) {
                 // 黄字会心率 = 白字会心率 × 54.05%
-                return whitehuiXinRate * 0.5405;
+                tmpRes = whitehuiXinRate * 0.5405;
+                return tmpRes>=80?80:tmpRes;
             }
 
             // 计算黄字会意率
             function calculateYellowhuiYiRate(whitehuiYiRate) {
-                // 黄字会意率 = 白字会意率 × 54%
-                return whitehuiYiRate * 0.54;
+                // 黄字会意率 = 白字会意率 × 54.07%
+                tmpRes = whitehuiYiRate * 0.5407;
+                return tmpRes>=40?40:tmpRes;
             }
 
             // 计算按钮事件
@@ -850,6 +872,8 @@
                 document.getElementById('originalhuiYiResult').textContent = originalhuiYiRate.toFixed(2);
                 document.getElementById('finalhuiYiResult').textContent = finalhuiYiRate.toFixed(2);
                 document.getElementById('yellowhuiYiResult').textContent = yellowhuiYiRate.toFixed(2);
+
+                document.getElementById('baojilv').textContent = (yellowhuiXinRate+yellowhuiYiRate).toFixed(2);
             }
 
             // 为初始输入框添加验证事件
@@ -864,3 +888,6 @@
 </body>
 
 </html>
+
+
+
