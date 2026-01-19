@@ -14,16 +14,17 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 10px;
-            background-color: #f5f5f5;
+            background-color: #2c3e50;
+            color: #ecf0f1;
         }
 
         .container {
             max-width: 100%;
             margin: 0 auto;
-            background-color: white;
+            background-color: #34495e;
             padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .original-stats-section {
@@ -35,11 +36,11 @@
         }
 
         .equipment-item {
-            border: 1px solid #ddd;
+            border: 1px solid #5d6d7e;
             padding: 10px;
             margin-bottom: 10px;
             border-radius: 5px;
-            background-color: #fafafa;
+            background-color: #2c3e50;
         }
 
         .equipment-header {
@@ -71,17 +72,19 @@
         .stat-input label {
             font-size: 12px;
             margin-bottom: 3px;
-            color: #666;
+            color: #bdc3c7;
         }
 
         .stat-input input,
         .stat-input select {
             padding: 6px;
-            border: 1px solid #ccc;
+            border: 1px solid #5d6d7e;
             border-radius: 3px;
             width: 100%;
             font-size: 14px;
             min-height: 34px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
         }
 
         .btn {
@@ -93,18 +96,18 @@
         }
 
         .add-equipment-btn {
-            background-color: #4CAF50;
+            background-color: #27ae60;
             color: white;
             margin-bottom: 15px;
         }
 
         .delete-equipment-btn {
-            background-color: #f44336;
+            background-color: #e74c3c;
             color: white;
         }
 
         .calculate-btn {
-            background-color: #2196F3;
+            background-color: #3498db;
             color: white;
             margin-top: 15px;
             width: 100%;
@@ -113,9 +116,9 @@
         .results-section {
             margin-top: 20px;
             padding: 15px;
-            border: 1px solid #ddd;
+            border: 1px solid #5d6d7e;
             border-radius: 5px;
-            background-color: #f9f9f9;
+            background-color: #2c3e50;
         }
 
         .results-grid {
@@ -127,29 +130,30 @@
         .result-item {
             text-align: center;
             padding: 10px;
-            border: 1px solid #eee;
+            border: 1px solid #5d6d7e;
             border-radius: 5px;
+            background-color: #34495e;
         }
 
         .result-item h3 {
             margin: 0 0 10px 0;
-            color: #333;
+            color: #ecf0f1;
         }
 
         .result-value {
             font-size: 18px;
             font-weight: bold;
-            color: #2196F3;
+            color: #3498db;
         }
 
         .original-value {
             font-size: 14px;
-            color: #666;
+            color: #bdc3c7;
         }
 
         .arrow {
             font-size: 20px;
-            color: #2196F3;
+            color: #3498db;
             margin: 0 5px;
         }
 
@@ -164,36 +168,31 @@
         .info-section {
             margin-top: 20px;
             padding: 15px;
-            border: 1px solid #ddd;
+            border: 1px solid #5d6d7e;
             border-radius: 5px;
-            background-color: #eef7ff;
+            background-color: #2c3e50;
         }
 
         .info-section h3 {
             margin-top: 0;
+            color: #ecf0f1;
         }
 
         .conversion-info {
             margin-top: 15px;
             padding: 10px;
-            background-color: #f0f8ff;
-            border-left: 4px solid #2196F3;
+            background-color: #34495e;
+            border-left: 4px solid #3498db;
         }
 
         .error-message {
-            color: #f44336;
+            color: #e74c3c;
             font-size: 12px;
             margin-top: 3px;
         }
 
-        .yellow-precision {
-            color: #FFD700;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .yellow-crit {
-            color: #FFD700;
+        .yellow-fonts {
+            color: #f1c40f;
             font-weight: bold;
             font-size: 18px;
         }
@@ -222,8 +221,9 @@
         .result-item-half {
             text-align: center;
             padding: 10px;
-            border: 1px solid #eee;
+            border: 1px solid #5d6d7e;
             border-radius: 5px;
+            background-color: #34495e;
         }
 
         /* 移动端适配 */
@@ -231,45 +231,45 @@
             body {
                 padding: 5px;
             }
-            
+
             .container {
                 padding: 10px;
             }
-            
+
             .equipment-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .equipment-header h3 {
                 margin-bottom: 10px;
             }
-            
+
             .stats-inputs {
                 grid-template-columns: 1fr;
                 gap: 8px;
             }
-            
+
             .stat-input-pair {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .original-stats-pair {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .results-pair {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .results-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .result-item {
                 margin-bottom: 10px;
             }
-            
+
             .stat-input input,
             .stat-input select {
                 padding: 6px;
@@ -281,83 +281,84 @@
             .stat-input-pair {
                 grid-template-columns: 1fr;
             }
-            
+
             .original-stats-pair {
                 grid-template-columns: 1fr;
             }
-            
+
             .results-pair {
                 grid-template-columns: 1fr;
             }
-            
+
             .stat-input input,
             .stat-input select {
                 padding: 5px;
                 font-size: 14px;
                 min-height: 30px;
             }
-            
+
             .btn {
                 padding: 8px 12px;
                 font-size: 14px;
             }
         }
-        
+
         /* 针对小屏幕设备进一步优化 */
         @media (max-width: 360px) {
+
             .stat-input input,
             .stat-input select {
                 padding: 4px;
                 font-size: 13px;
                 min-height: 28px;
             }
-            
+
             .stats-inputs {
                 gap: 8px;
             }
-            
+
             .result-item {
                 padding: 8px;
             }
-            
+
             .result-value {
                 font-size: 16px;
             }
-            
+
             .original-value {
                 font-size: 12px;
             }
         }
-        
+
         /* 针对较宽屏幕的优化 */
         @media (min-width: 481px) and (max-width: 768px) {
             .stat-input-pair {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .original-stats-pair {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .results-pair {
                 grid-template-columns: 1fr 1fr;
             }
         }
-        
+
         /* 针对较大屏幕的优化 */
         @media (min-width: 1024px) {
             .stat-input-pair {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .original-stats-pair {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .results-pair {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .results-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -383,12 +384,18 @@
             </div>
             <div class="original-stats-pair">
                 <div class="stat-input">
-                    <label>原始会心率</label>
-                    <input type="number" id="originalCritRate" placeholder="输入原始会心率" step="0.01">
-                </div>
-                <div class="stat-input">
                     <label>原始精准</label>
                     <input type="number" id="originalPrecision" placeholder="输入原始精准" step="0.01">
+                </div>
+                <div class="stat-input">
+                    <label>原始会心率</label>
+                    <input type="number" id="originalhuiXinRate" placeholder="输入原始会心率" step="0.01">
+                </div>
+            </div>
+            <div class="original-stats-pair">
+                <div class="stat-input">
+                    <label>原始会意</label>
+                    <input type="number" id="originalhuiYiRate" placeholder="输入原始会意率" step="0.01">
                 </div>
             </div>
         </div>
@@ -423,18 +430,7 @@
                 </div>
             </div>
             <div class="results-pair">
-                <div class="result-item-half crit-result">
-                    <h3>会心率</h3>
-                    <div class="comparison">
-                        <span class="original-value" id="originalCritRateResult">-</span>
-                        <span class="arrow">→</span>
-                        <span class="result-value" id="finalCritRateResult">-</span>
-                    </div>
-                    <div class="comparison">
-                        <span>黄字会心率:</span>
-                        <span class="yellow-crit" id="yellowCritRateResult">-</span>
-                    </div>
-                </div>
+                <!-- 精准 -->
                 <div class="result-item-half precision-result">
                     <h3>精准</h3>
                     <div class="comparison">
@@ -444,7 +440,33 @@
                     </div>
                     <div class="comparison">
                         <span>黄字精准率:</span>
-                        <span class="yellow-precision" id="yellowPrecisionResult">-</span>
+                        <span class="yellow-fonts" id="yellowPrecisionResult">-</span>
+                    </div>
+                </div>
+                <!-- 会心 -->
+                <div class="result-item-half crit-result">
+                    <h3>会心率</h3>
+                    <div class="comparison">
+                        <span class="original-value" id="originalhuiXinRateResult">-</span>
+                        <span class="arrow">→</span>
+                        <span class="result-value" id="finalhuiXinRateResult">-</span>
+                    </div>
+                    <div class="comparison">
+                        <span>黄字会心率:</span>
+                        <span class="yellow-fonts" id="yellowhuiXinRateResult">-</span>
+                    </div>
+                </div>
+                <!-- 会意 -->
+                <div class="result-item-half crit-result">
+                    <h3>会意</h3>
+                    <div class="comparison">
+                        <span class="original-value" id="originalhuiYiResult">-</span>
+                        <span class="arrow">→</span>
+                        <span class="result-value" id="finalhuiYiResult">-</span>
+                    </div>
+                    <div class="comparison">
+                        <span>黄字会意率:</span>
+                        <span class="yellow-fonts" id="yellowhuiYiResult">-</span>
                     </div>
                 </div>
             </div>
@@ -458,21 +480,24 @@
                 <p>1点劲 = 0.225点最小外功 + 1.36点最大外功</p>
                 <p><strong>敏词条转换比例：</strong></p>
                 <p>1点敏 = 0.076的会心率 + 0.9的最小外功</p>
+                <p><strong>势词条转换比例：</strong></p>
+                <p>1点势 = 0.038的会意率 + 0.9的最大外功</p>
             </div>
             <p>各词条上限：</p>
             <ul>
-                <li>敏词条上限：54</li>
-                <li>劲词条上限：54</li>
-                <li>最小外功上限：85.2</li>
-                <li>最大外功上限：85.2</li>
-                <li>会心率上限：9.8</li>
-                <li>精准上限：8.8</li>
+                <li>敏/劲/势 承音词条上限：54</li>
+                <li>最小外功承音上限：85.2</li>
+                <li>最大外功承音上限：85.2</li>
+                <li>精准率承音上限：8.8</li>
+                <li>会心率承音上限：9.8</li>
+                <li>会意率承音上限：4.9</li>
             </ul>
             <p><strong>黄字精准率计算：</strong></p>
             <p>通过二次函数计算白字精准率对应的黄字精准率：</p>
-            <!-- <p>已知数据点：白字100→黄字83.92，白字120→黄字94.73，白字130→黄字100</p> -->
             <p><strong>黄字会心率计算：</strong></p>
             <p>黄字会心率 = 白字会心率 × 54.05%</p>
+            <p><strong>黄字会意率计算：</strong></p>
+            <p>黄字会意率 = 白字会意率 × 54%</p>
         </div>
     </div>
 
@@ -486,16 +511,19 @@
             const STAT_LIMITS = {
                 minAttack: 85.2,
                 maxAttack: 85.2,
-                critRate: 9.8,
+                huiXinRate: 9.8,
+                huiYiRate: 4.9,
                 precision: 8.8,
                 dex: 54,  // 敏
-                str: 54   // 劲
+                str: 54,   // 劲
+                shi: 54 // 势
             };
 
             // 转换比例
             const CONVERSION_RATES = {
                 str: { minAttack: 0.225, maxAttack: 1.36 },
-                dex: { critRate: 0.076, minAttack: 0.9 }
+                dex: { huiXinRate: 0.076, minAttack: 0.9 },
+                shi: { huiYiRate: 0.038, maxAttack: 0.9 }
             };
 
             let equipmentCount = 0;
@@ -523,10 +551,12 @@
                                     <option value="">选择类型</option>
                                     <option value="minAttack">最小外功</option>
                                     <option value="maxAttack">最大外功</option>
-                                    <option value="critRate">会心率</option>
+                                    <option value="huiXinRate">会心率</option>
                                     <option value="precision">精准</option>
                                     <option value="dex">敏</option>
                                     <option value="str">劲</option>
+                                    <option value="shi">势</option>
+                                    <option value="huiYiRate">会意</option>
                                 </select>
                                 <div class="error-message" id="error-${equipmentId}-1"></div>
                             </div>
@@ -542,10 +572,12 @@
                                     <option value="">选择类型</option>
                                     <option value="minAttack">最小外功</option>
                                     <option value="maxAttack">最大外功</option>
-                                    <option value="critRate">会心率</option>
+                                    <option value="huiXinRate">会心率</option>
                                     <option value="precision">精准</option>
                                     <option value="dex">敏</option>
                                     <option value="str">劲</option>
+                                    <option value="shi">势</option>
+                                    <option value="huiYiRate">会意</option>
                                 </select>
                                 <div class="error-message" id="error-${equipmentId}-2"></div>
                             </div>
@@ -561,10 +593,12 @@
                                     <option value="">选择类型</option>
                                     <option value="minAttack">最小外功</option>
                                     <option value="maxAttack">最大外功</option>
-                                    <option value="critRate">会心率</option>
+                                    <option value="huiXinRate">会心率</option>
                                     <option value="precision">精准</option>
                                     <option value="dex">敏</option>
                                     <option value="str">劲</option>
+                                    <option value="shi">势</option>
+                                    <option value="huiYiRate">会意</option>
                                 </select>
                                 <div class="error-message" id="error-${equipmentId}-3"></div>
                             </div>
@@ -580,10 +614,12 @@
                                     <option value="">选择类型</option>
                                     <option value="minAttack">最小外功</option>
                                     <option value="maxAttack">最大外功</option>
-                                    <option value="critRate">会心率</option>
+                                    <option value="huiXinRate">会心率</option>
                                     <option value="precision">精准</option>
                                     <option value="dex">敏</option>
                                     <option value="str">劲</option>
+                                    <option value="shi">势</option>
+                                    <option value="huiYiRate">会意</option>
                                 </select>
                                 <div class="error-message" id="error-${equipmentId}-4"></div>
                             </div>
@@ -599,10 +635,12 @@
                                     <option value="">选择类型</option>
                                     <option value="minAttack">最小外功</option>
                                     <option value="maxAttack">最大外功</option>
-                                    <option value="critRate">会心率</option>
+                                    <option value="huiXinRate">会心率</option>
                                     <option value="precision">精准</option>
                                     <option value="dex">敏</option>
                                     <option value="str">劲</option>
+                                    <option value="shi">势</option>
+                                    <option value="huiYiRate">会意</option>
                                 </select>
                                 <div class="error-message" id="error-${equipmentId}-5"></div>
                             </div>
@@ -662,10 +700,10 @@
                 if (statType && STAT_LIMITS[statType] !== undefined) {
                     if (statValue > STAT_LIMITS[statType]) {
                         errorElement.textContent = '超出承音上限-扣除多余部分';
-                        element.style.borderColor = '#9ee09e';
+                        element.style.borderColor = '#e74c3c';
                     } else {
                         errorElement.textContent = '';
-                        element.style.borderColor = '#ccc';
+                        element.style.borderColor = '#5d6d7e';
                     }
                 }
             }
@@ -673,30 +711,22 @@
             // 计算黄字精准率的二次函数
             // 已知三个点：(100, 83.92), (120, 94.73), (130, 100)
             function calculateYellowPrecision(whitePrecision) {
-                // 使用拉格朗日插值法或解线性方程组
-                // 设 y = ax^2 + bx + c
-                // 10000a + 100b + c = 83.92  (1)
-                // 14400a + 120b + c = 94.73  (2)
-                // 16900a + 130b + c = 100     (3)
-
-                // (2)-(1): 4400a + 20b = 10.81  (4)
-                // (3)-(2): 2500a + 10b = 5.27   (5)
-                // (4)-2*(5): 4400a + 20b - 2*(2500a + 10b) = 10.81 - 2*5.27
-                // 4400a + 20b - 5000a - 20b = 10.81 - 10.54
-                // -600a = 0.27
-                // a = -0.00045
-
-                const a_calc = -0.00045;
-                const b_calc = (10.81 - 4400 * a_calc) / 20;  // 从方程(4)计算b
-                const c_calc = 83.92 - a_calc * 100 * 100 - b_calc * 100;  // 从方程(1)计算c
-
-                return a_calc * whitePrecision * whitePrecision + b_calc * whitePrecision + c_calc;
+                // 通过预先计算得出的二次函数系数
+                // y = -0.00045x² + 0.09955x + 28.06
+                const x = whitePrecision;
+                return -0.00045 * x * x + 0.09955 * x + 28.06;
             }
 
             // 计算黄字会心率
-            function calculateYellowCritRate(whiteCritRate) {
+            function calculateYellowhuiXinRate(whitehuiXinRate) {
                 // 黄字会心率 = 白字会心率 × 54.05%
-                return whiteCritRate * 0.5405;
+                return whitehuiXinRate * 0.5405;
+            }
+
+            // 计算黄字会意率
+            function calculateYellowhuiYiRate(whitehuiYiRate) {
+                // 黄字会意率 = 白字会意率 × 54%
+                return whitehuiYiRate * 0.54;
             }
 
             // 计算按钮事件
@@ -704,27 +734,19 @@
 
             // 计算函数
             function calculateStats() {
-                // 检查是否有超出上限的数值
-                // let hasExceededLimit = false;
-                // const errorElements = document.querySelectorAll('.error-message');
-                // errorElements.forEach(error => {
-                //     if (error.textContent.includes('超出的承音上限')) {
-                //         hasExceededLimit = true;
-                //     }
-                // });
-
-
                 // 获取原始属性
                 const originalMinAttack = parseFloat(document.getElementById('originalMinAttack').value) || 0;
                 const originalMaxAttack = parseFloat(document.getElementById('originalMaxAttack').value) || 0;
-                const originalCritRate = parseFloat(document.getElementById('originalCritRate').value) || 0;
                 const originalPrecision = parseFloat(document.getElementById('originalPrecision').value) || 0;
+                const originalhuiXinRate = parseFloat(document.getElementById('originalhuiXinRate').value) || 0;
+                const originalhuiYiRate = parseFloat(document.getElementById('originalhuiYiRate').value) || 0;
 
                 // 初始化结果
                 let finalMinAttack = originalMinAttack;
                 let finalMaxAttack = originalMaxAttack;
-                let finalCritRate = originalCritRate;
                 let finalPrecision = originalPrecision;
+                let finalhuiXinRate = originalhuiXinRate;
+                let finalhuiYiRate = originalhuiYiRate;
 
                 // 遍历所有装备
                 const equipmentItems = document.querySelectorAll('.equipment-item');
@@ -743,8 +765,8 @@
                                 if (statValue < STAT_LIMITS[statType]) {
                                     const diff = STAT_LIMITS[statType] - statValue;
 
-                                    // 如果是可转换词条（敏、劲），需要转换
-                                    if (statType === 'dex' || statType === 'str') {
+                                    // 如果是可转换词条（敏、劲、势），需要转换
+                                    if (statType === 'dex' || statType === 'str' || statType === 'shi') {
                                         const conversion = CONVERSION_RATES[statType];
 
                                         // 转换为对应的属性
@@ -754,18 +776,19 @@
                                         if (conversion.maxAttack) {
                                             finalMaxAttack += diff * conversion.maxAttack;
                                         }
-                                        if (conversion.critRate) {
-                                            finalCritRate += diff * conversion.critRate;
+                                        if (conversion.huiXinRate) {
+                                            finalhuiXinRate += diff * conversion.huiXinRate;
                                         }
-                                        if (conversion.precision) {
-                                            finalPrecision += diff * conversion.precision;
+                                        if (conversion.huiYiRate) {
+                                            finalhuiYiRate += diff * conversion.huiYiRate;
                                         }
                                     } else {
                                         // 直接增加对应属性
                                         if (statType === 'minAttack') finalMinAttack += diff;
                                         if (statType === 'maxAttack') finalMaxAttack += diff;
-                                        if (statType === 'critRate') finalCritRate += diff;
                                         if (statType === 'precision') finalPrecision += diff;
+                                        if (statType === 'huiXinRate') finalhuiXinRate += diff;
+                                        if (statType === 'huiYiRate') finalhuiYiRate += diff;
                                     }
                                 }
 
@@ -773,8 +796,8 @@
                                 if (statValue > STAT_LIMITS[statType]) {
                                     const diff = statValue - STAT_LIMITS[statType];
 
-                                    // 如果是可转换词条（敏、劲），需要转换
-                                    if (statType === 'dex' || statType === 'str') {
+                                    // 如果是可转换词条（敏、劲、势），需要转换
+                                    if (statType === 'dex' || statType === 'str' || statType === 'shi') {
                                         const conversion = CONVERSION_RATES[statType];
 
                                         // 转换为对应的属性
@@ -784,30 +807,30 @@
                                         if (conversion.maxAttack) {
                                             finalMaxAttack -= diff * conversion.maxAttack;
                                         }
-                                        if (conversion.critRate) {
-                                            finalCritRate -= diff * conversion.critRate;
+                                        if (conversion.huiXinRate) {
+                                            finalhuiXinRate -= diff * conversion.huiXinRate;
                                         }
-                                        if (conversion.precision) {
-                                            finalPrecision -= diff * conversion.precision;
+                                        if (conversion.huiYiRate) {
+                                            finalhuiYiRate -= diff * conversion.huiYiRate;
                                         }
                                     } else {
-                                        // 直接增加对应属性
+                                        // 直接减少对应属性
                                         if (statType === 'minAttack') finalMinAttack -= diff;
                                         if (statType === 'maxAttack') finalMaxAttack -= diff;
-                                        if (statType === 'critRate') finalCritRate -= diff;
                                         if (statType === 'precision') finalPrecision -= diff;
+                                        if (statType === 'huiXinRate') finalhuiXinRate -= diff;
+                                        if (statType === 'huiYiRate') finalhuiYiRate -= diff;
                                     }
                                 }
-
                             }
-
                         }
                     }
                 });
 
                 // 计算黄字精准率和黄字会心率
                 const yellowPrecision = calculateYellowPrecision(finalPrecision);
-                const yellowCritRate = calculateYellowCritRate(finalCritRate);
+                const yellowhuiXinRate = calculateYellowhuiXinRate(finalhuiXinRate);
+                const yellowhuiYiRate = calculateYellowhuiYiRate(finalhuiYiRate);
 
                 // 显示结果
                 document.getElementById('originalMinAttackResult').textContent = originalMinAttack.toFixed(2);
@@ -816,20 +839,24 @@
                 document.getElementById('originalMaxAttackResult').textContent = originalMaxAttack.toFixed(2);
                 document.getElementById('finalMaxAttackResult').textContent = finalMaxAttack.toFixed(2);
 
-                document.getElementById('originalCritRateResult').textContent = originalCritRate.toFixed(2);
-                document.getElementById('finalCritRateResult').textContent = finalCritRate.toFixed(2);
-                document.getElementById('yellowCritRateResult').textContent = yellowCritRate.toFixed(2);
+                document.getElementById('originalhuiXinRateResult').textContent = originalhuiXinRate.toFixed(2);
+                document.getElementById('finalhuiXinRateResult').textContent = finalhuiXinRate.toFixed(2);
+                document.getElementById('yellowhuiXinRateResult').textContent = yellowhuiXinRate.toFixed(2);
 
                 document.getElementById('originalPrecisionResult').textContent = originalPrecision.toFixed(2);
                 document.getElementById('finalPrecisionResult').textContent = finalPrecision.toFixed(2);
                 document.getElementById('yellowPrecisionResult').textContent = yellowPrecision.toFixed(2);
+
+                document.getElementById('originalhuiYiResult').textContent = originalhuiYiRate.toFixed(2);
+                document.getElementById('finalhuiYiResult').textContent = finalhuiYiRate.toFixed(2);
+                document.getElementById('yellowhuiYiResult').textContent = yellowhuiYiRate.toFixed(2);
             }
 
             // 为初始输入框添加验证事件
-            const originalInputs = document.querySelectorAll('#originalMinAttack, #originalMaxAttack, #originalCritRate, #originalPrecision');
+            const originalInputs = document.querySelectorAll('#originalMinAttack, #originalMaxAttack, #originalhuiXinRate, #originalPrecision, #originalhuiYiRate');
             originalInputs.forEach(input => {
                 input.addEventListener('input', function () {
-                    this.style.borderColor = '#ccc';
+                    this.style.borderColor = '#5d6d7e';
                 });
             });
         });
